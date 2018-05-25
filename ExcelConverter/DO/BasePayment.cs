@@ -1,7 +1,6 @@
-﻿using System;
-using System.Windows;
+﻿using FinancialAccountTool.ExcelSerialzation.Attributes;
 using NPOI.SS.UserModel;
-using FinancialAccountTool.ExcelSerialzation.Attributes;
+using System;
 
 namespace FinanicalAccountModernClient.DO
 {
@@ -13,22 +12,10 @@ namespace FinanicalAccountModernClient.DO
 
         protected BasePayment(IRow row)
         {
-            try
-            {
-                Date = row.Cells[0].DateCellValue;
-                Account = Convert.ToInt32(row.Cells[1].ToString());
-                Credit = (float) row.Cells[2].NumericCellValue;
-                Currency = row.Cells[3].StringCellValue;
-            }
-            catch (FormatException e)
-            {
-                //MessageBox.Show($@"Parse failed because the data format is incorrect, please double check {this}. {Environment.NewLine} {e.Message}",
-                //    @"Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                //Application.Current.Shutdown();
-                string errorMsg = string.Format($@"Parse failed because the data format is incorrect, please double check {this}. {Environment.NewLine} {e.Message}", @"Error");
-                Exception ex = new Exception(errorMsg);
-                throw (ex);
-            }
+            Date = row.Cells[0].DateCellValue;
+            Account = Convert.ToInt32(row.Cells[1].ToString());
+            Credit = (float) row.Cells[2].NumericCellValue;
+            Currency = row.Cells[3].StringCellValue;
         }
 
         public override string ToString()

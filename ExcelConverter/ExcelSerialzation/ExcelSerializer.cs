@@ -13,8 +13,6 @@ using System.IO;
 using System.Linq;
 using System.Net;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinancialAccountTool.ExcelSerialzation
 {
@@ -182,37 +180,6 @@ namespace FinancialAccountTool.ExcelSerialzation
                             cell.SetCellValue(Convert.ToString(dataValue));
                             cell.SetCellType(CellType.String);
                         }
-
-                        //                        switch (dataValue.GetType())
-                        //                        {
-                        //                            case bool value:
-                        //                                cell.SetCellValue(value);
-                        //                                cell.SetCellType(CellType.Boolean);
-                        //                                break;
-                        //                            case int value:
-                        //                                cell.SetCellValue(value);
-                        //                                cell.SetCellType(CellType.Numeric);
-                        //                                break;
-                        //                            case long value:
-                        //                                cell.SetCellValue(value);
-                        //                                cell.SetCellType(CellType.Numeric);
-                        //                                break;
-                        //                            case float value:
-                        //                                cell.SetCellValue(value);
-                        //                                cell.SetCellType(CellType.Numeric);
-                        //                                break;
-                        //                            case double value:
-                        //                                cell.SetCellValue(value);
-                        //                                cell.SetCellType(CellType.Numeric);
-                        //                                break;
-                        //                            case DateTime value:
-                        //                                cell.SetCellValue(value);
-                        //                                break;
-                        //                            default:
-                        //                                cell.SetCellValue(Convert.ToString(dataValue));
-                        //                                cell.SetCellType(CellType.String);
-                        //                                break;
-                        //                        }
                     }
                 }
             }

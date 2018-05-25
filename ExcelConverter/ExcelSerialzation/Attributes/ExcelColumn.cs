@@ -1,9 +1,5 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Reflection;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace FinancialAccountTool.ExcelSerialzation.Attributes
 {
@@ -16,12 +12,6 @@ namespace FinancialAccountTool.ExcelSerialzation.Attributes
         public bool IsList { set; get; }
         public bool IsLink { set; get; }
         public bool IsImageLink { set; get; }
-
         public Type ListType { set; get; }
-
-        public static explicit operator ExcelColumn(CustomAttributeData v)
-        {
-            throw new NotImplementedException();
-        }
     }
 }

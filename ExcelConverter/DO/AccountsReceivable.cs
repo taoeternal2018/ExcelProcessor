@@ -13,21 +13,11 @@ namespace FinanicalAccountModernClient.DO
         }
         public AccountsReceivable(IRow row)
         {
-            try
-            {
-                Assignment = Convert.ToInt64(row.Cells[0].StringCellValue);
-                DocumentDate = row.Cells[1].DateCellValue;
-                AmountInLocalCurrency = (float) row.Cells[2].NumericCellValue;
-                LocalCurrency = row.Cells[3].StringCellValue;
-                Account = Convert.ToInt32(row.Cells[4].StringCellValue);
-            }
-            catch (FormatException e)
-            {
-                //MessageBox.Show($@"Parse failed because the data format is incorrect, please double check {this}. {Environment.NewLine} {e.Message}",
-                //    @"Error", MessageBoxButton.OK, MessageBoxImage.Error);
-                //Application.Current.Shutdown();
-                throw (e);
-            }
+            Assignment = Convert.ToInt64(row.Cells[0].StringCellValue);
+            DocumentDate = row.Cells[1].DateCellValue;
+            AmountInLocalCurrency = (float)row.Cells[2].NumericCellValue;
+            LocalCurrency = row.Cells[3].StringCellValue;
+            Account = Convert.ToInt32(row.Cells[4].StringCellValue);
         }
 
         public override string ToString()
