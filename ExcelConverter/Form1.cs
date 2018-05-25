@@ -82,6 +82,7 @@ namespace FinancialAccountTool
                     AddListBoxMessage("File to process:");
                     AddListBoxMessage("    " + file);
                     SetButtonStatus(ItemOrButton.Clear, true);
+
                     if (LoadInitData(_inFile))
                     {
                         SetButtonStatus(ItemOrButton.Process, true);
