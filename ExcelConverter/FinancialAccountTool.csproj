@@ -131,6 +131,9 @@
   </ItemGroup>
   <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>"c:\Program Files (x86)\Microsoft\ILMerge\ILMerge" /ndebug /target:winexe /out:FinancialAccountUtil.exe /log "FinancialAccountTool.exe" /log "NPOI.dll" /log "NPOI.OOXML.dll" /log "NPOI.OpenXml4Net.dll" /log "NPOI.OpenXmlFormats.dll" /log "ICSharpCode.SharpZipLib.dll" /targetplatform:v4</PostBuildEvent>
+  </PropertyGroup>
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
