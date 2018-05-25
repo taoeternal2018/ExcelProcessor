@@ -19,19 +19,20 @@ namespace FinancialAccountTool
 {
     public partial class FinancialAccountTool : Form
     {
-        private string inFile = string.Empty;
-        private string outFile = string.Empty;
+        #region members
+        private string _inFile = string.Empty;
+        private string _outFile = string.Empty;
 
         private static readonly Settings Settings = Settings.Default;
         private readonly List<AccountsReceivable> _sourceAccountsReceivables = new List<AccountsReceivable>();
         private readonly Dictionary<string, Payment> _payments = new Dictionary<string, Payment>();
+        #endregion
 
+        #region FormFunctions
         public FinancialAccountTool()
         {
             InitializeComponent();
         }
-
-        #region FormFunctions
         private void FinancialAccountTool_Load(object sender, EventArgs e)
         {
             SetInitButtonStatus();
@@ -76,12 +77,12 @@ namespace FinancialAccountTool
                 if (Path.GetExtension(file).Equals(".xlsx") ||
                     Path.GetExtension(file).Equals(".xls"))
                 {
-                    inFile = file;
+                    _inFile = file;
                     listBox1.Items.Clear();
                     AddListBoxMessage("File to process:");
                     AddListBoxMessage("    " + file);
                     SetButtonStatus(ItemOrButton.Clear, true);
-                    if (LoadInitData(inFile))
+                    if (LoadInitData(_inFile))
                     {
                         SetButtonStatus(ItemOrButton.Process, true);
                         UpdateStatusMessage("Click the Process button.");
@@ -111,7 +112,7 @@ namespace FinancialAccountTool
             {
                 return;
             }
-            outFile = saveFileDialog.FileName;
+            _outFile = saveFileDialog.FileName;
             SetButtonStatus(ItemOrButton.Process, false);
 
             var worker = new BackgroundWorker();
@@ -170,14 +171,14 @@ namespace FinancialAccountTool
             {
                 toolStripProgressBar1.Value = toolStripProgressBar1.Maximum;
                 listBox1.Items.Add("Job done! Output file:");
-                listBox1.Items.Add("    "+outFile);
+                listBox1.Items.Add("    "+_outFile);
                 //SetButtonStatus(ItemOrButton.Process, false);
                 UpdateStatusMessage("Add a file to process.");
             }
         }
         private bool OutputResult(IEnumerable<Transaction> transactions, Dictionary<string, Payment> payments)
         {
-            using (var serializer = new ExcelSerializer(outFile))
+            using (var serializer = new ExcelSerializer(_outFile))
             {
                 serializer.Serialize(transactions);
                 var paymentList = payments
