@@ -3,3 +3,5 @@
 ################################################################################
 
 /ExcelConverter/bin/Debug
+/ExcelConverter/obj/Debug
+/packages

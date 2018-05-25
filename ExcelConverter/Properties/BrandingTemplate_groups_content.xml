@@ -1,0 +1,131 @@
+<?xml version="1.0"?>
+<pnp:Provisioning xmlns:pnp="http://schemas.dev.office.com/PnP/2017/05/ProvisioningSchema">
+  <pnp:Preferences Generator="OfficeDevPnP.Core, Version=2.19.1710.2, Culture=neutral, PublicKeyToken=null">
+    <pnp:Parameters>
+      <pnp:Parameter Key="parameterKey">parameterValue</pnp:Parameter>
+    </pnp:Parameters>
+  </pnp:Preferences>
+  <pnp:Templates ID="CONTAINER-EMPTY-PUBLISHING">
+    <pnp:ProvisioningTemplate ID="EMPTY-PUBLISHING" Version="1" ImagePreviewUrl="" BaseSiteTemplate="BLANKINTERNETCONTAINER#0" Scope="RootSite">
+      <pnp:PropertyBagEntries>
+        <pnp:PropertyBagEntry Key="PRFT_JustinTest" Value ="value1" Overwrite="true" />
+      </pnp:PropertyBagEntries>
+	   <pnp:Security>
+        <pnp:SiteGroups>
+		 <pnp:SiteGroup Title="{SiteName} KM" Description="" Owner="{siteowner}" AllowMembersEditMembership="true" AllowRequestToJoinLeave="false" AutoAcceptRequestToJoinLeave="false" OnlyAllowMembersViewMembership="false">
+          </pnp:SiteGroup>
+		  <pnp:SiteGroup Title="{SiteName} CM" Description="" Owner="{SiteName} KM" AllowMembersEditMembership="true" AllowRequestToJoinLeave="false" AutoAcceptRequestToJoinLeave="false" OnlyAllowMembersViewMembership="false">
+          </pnp:SiteGroup>
+	     <pnp:SiteGroup Title="{SiteName} SME" Description="" Owner="{SiteName} CM" AllowMembersEditMembership="false" AllowRequestToJoinLeave="false" AutoAcceptRequestToJoinLeave="false" OnlyAllowMembersViewMembership="false">
+          </pnp:SiteGroup>
+	    </pnp:SiteGroups>
+        <pnp:Permissions>
+          <pnp:RoleDefinitions>
+            <pnp:RoleDefinition Name="Manage List Items" Description="Allows a user to manage list items">
+              <pnp:Permissions>
+                <pnp:Permission>ViewListItems</pnp:Permission>
+                <pnp:Permission>AddListItems</pnp:Permission>
+                <pnp:Permission>EditListItems</pnp:Permission>
+                <pnp:Permission>DeleteListItems</pnp:Permission>
+              </pnp:Permissions>
+            </pnp:RoleDefinition>
+          </pnp:RoleDefinitions>
+          <pnp:RoleAssignments> <!-- TODO: Define permissions role for each of these groups -->
+            <pnp:RoleAssignment Principal="{SiteName} KM" RoleDefinition="Manage List Items"/>
+			<pnp:RoleAssignment Principal="{SiteName} CM" RoleDefinition="Manage List Items"/>
+			<pnp:RoleAssignment Principal="{SiteName} SME" RoleDefinition="Manage List Items"/>
+          </pnp:RoleAssignments>
+        </pnp:Permissions>
+       </pnp:Security>
+      <pnp:SiteFields>
+        <Field Type="Text" DisplayName="Test Field" Required="FALSE" EnforceUniqueValues="FALSE" Indexed="FALSE" MaxLength="255" Group="Test Group" ID="{931f62ff-1144-4efb-a191-74383d7968b4}" StaticName="TestField" Name="TestField" SourceID="{4193763c-b930-471b-bbb8-a9d6095d167b}" AllowDeletion="TRUE" />
+		<Field Type="Lookup" DisplayName="LookupTest" Required="FALSE" EnforceUniqueValues="FALSE" List="{{listid:LookupSource}}" WebId="25ac948e-133e-435b-8ae4-b04fb7fa5669" ShowField="Title" UnlimitedLengthInDocumentLibrary="FALSE" Group="Custom Columns" ID="{dad0d801-80d8-4a9c-a523-9b365ee373a1}" SourceID="{25ac948e-133e-435b-8ae4-b04fb7fa5669}" StaticName="LookupTest" Name="LookupTest" />
+      </pnp:SiteFields>
+      <pnp:ContentTypes>
+        <pnp:ContentType ID="0x01001D0DD9564359AD4BAF9A2CA6C1FECED2" Name="LookupColumnTest" Description="" Group="Custom Content Types" NewFormUrl="" EditFormUrl="" DisplayFormUrl="">
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="c042a256-787d-4a6f-8a8a-cf6ab767f12d" Name="ContentType" />
+            <pnp:FieldRef ID="fa564e0f-0c70-4ab9-b863-0177e6ddd247" Name="Title" Required="true" />
+            <pnp:FieldRef ID="dad0d801-80d8-4a9c-a523-9b365ee373a1" Name="LookupTest" />
+          </pnp:FieldRefs>
+        </pnp:ContentType>
+       </pnp:ContentTypes>
+        <pnp:Lists>
+        <pnp:ListInstance Title="LookupReference" Description="" DocumentTemplate="" TemplateType="100" Url="Lists/LookupReference" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" ContentTypesEnabled="true" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/LookupReference/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/LookupReference/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/LookupReference/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=44" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01001D0DD9564359AD4BAF9A2CA6C1FECED2" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x01" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{7AB7B761-7379-4EC5-B5C4-9F95440D1084}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="/sites/justinpnptest2/Lists/LookupReference/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=44">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+                <FieldRef Name="LookupTest" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="dad0d801-80d8-4a9c-a523-9b365ee373a1" Name="LookupTest" DisplayName="LookupTest" />
+          </pnp:FieldRefs>
+        </pnp:ListInstance>
+        <pnp:ListInstance Title="LookupSource" Description="" DocumentTemplate="" TemplateType="100" Url="Lists/LookupSource" MinorVersionLimit="0" MaxVersionLimit="0" DraftVersionVisibility="0" TemplateFeatureID="00bfea71-de22-43b2-a848-c05709900100" EnableFolderCreation="false" DefaultDisplayFormUrl="{site}/Lists/LookupSource/DispForm.aspx" DefaultEditFormUrl="{site}/Lists/LookupSource/EditForm.aspx" DefaultNewFormUrl="{site}/Lists/LookupSource/NewForm.aspx" ImageUrl="/_layouts/15/images/itgen.png?rev=44" IsApplicationList="false" ValidationFormula="" ValidationMessage="">
+          <pnp:ContentTypeBindings>
+            <pnp:ContentTypeBinding ContentTypeID="0x01" Default="true" />
+            <pnp:ContentTypeBinding ContentTypeID="0x0120" />
+          </pnp:ContentTypeBindings>
+          <pnp:Views>
+            <View Name="{AE494E84-F929-4323-98F3-4F489989A69A}" DefaultView="TRUE" MobileView="TRUE" MobileDefaultView="TRUE" Type="HTML" DisplayName="All Items" Url="/sites/justinpnptest2/Lists/LookupSource/AllItems.aspx" Level="1" BaseViewID="1" ContentTypeID="0x" ImageUrl="/_layouts/15/images/generic.png?rev=44">
+              <Query>
+                <OrderBy>
+                  <FieldRef Name="ID" />
+                </OrderBy>
+              </Query>
+              <ViewFields>
+                <FieldRef Name="LinkTitle" />
+              </ViewFields>
+              <RowLimit Paged="TRUE">30</RowLimit>
+              <JSLink>clienttemplates.js</JSLink>
+            </View>
+          </pnp:Views>
+          <pnp:FieldRefs>
+            <pnp:FieldRef ID="ccc1037f-f65e-434a-868e-8c98af31fe29" Name="_ComplianceFlags" DisplayName="Label setting" />
+            <pnp:FieldRef ID="d4b6480a-4bed-4094-9a52-30181ea38f1d" Name="_ComplianceTag" DisplayName="Labels" />
+            <pnp:FieldRef ID="92be610e-ddbb-49f4-b3b1-5c2bc768df8f" Name="_ComplianceTagWrittenTime" DisplayName="Label Applied" />
+            <pnp:FieldRef ID="418d7676-2d6f-42cf-a16a-e43d2971252a" Name="_ComplianceTagUserId" DisplayName="Label applied by" />
+            <pnp:FieldRef ID="8382d247-72a9-44b1-9794-7b177edc89f3" Name="_IsRecord" DisplayName="Item is a Record" />
+            <pnp:FieldRef ID="3a6b296c-3f50-445c-a13f-9c679ea9dda3" Name="ComplianceAssetId" DisplayName="Compliance Asset Id" />
+          </pnp:FieldRefs>
+        </pnp:ListInstance>
+      </pnp:Lists>
+		<pnp:CustomActions>
+        <pnp:SiteCustomActions>
+          <pnp:CustomAction Name="{eb89f4f2-694a-42dc-8060-13670b0bac1e}" Location="ScriptLink" Title="Rise.Loader" Sequence="101" Rights="" ScriptBlock="window.RiseCDNRoot = sessionStorage['RiseCDNRoot'] || localStorage['RiseCDNRoot'] || 'https://rise-next.azureedge.net';var s = document.createElement('script');s.setAttribute('src', RiseCDNRoot + '/RiseLoader.js?id=D82DC2BB-7EDD-4FA2-ADDA-1F0E46D4F8D9');document.head.appendChild(s);" RegistrationType="None" ClientSideComponentId="00000000-0000-0000-0000-000000000000" ClientSideComponentProperties="" />
+        </pnp:SiteCustomActions>
+      </pnp:CustomActions>
+	   <pnp:Files>
+        <pnp:File Src="AKARi/default.aspx" Folder="{site}/Pages" Overwrite="true" Level="Published">
+          <pnp:Properties>
+            <pnp:Property Key="ContentTypeId" Value="{contenttypeid:Welcome Page}" />
+            <pnp:Property Key="Title" Value="Home" />
+            <pnp:Property Key="PublishingPageLayout" Value="{masterpagecatalog}/BlankWebPartPage.aspx, Blank Web Part page" />
+            <pnp:Property Key="PublishingPageContent" Value="&lt;p&gt;​​&lt;br&gt;This site was provisioned using the site provisioning form, this is an example of content inserted from the template​&lt;br&gt;​&lt;br&gt;&lt;/p&gt;" />
+            <pnp:Property Key="BSN" Value="Microsoft.SharePoint.Client.FieldLookupValue" />
+            <pnp:Property Key="_ListSchemaVersion" Value="47" />
+            <pnp:Property Key="_Dirty" Value="0" />
+            <pnp:Property Key="_Parsable" Value="1" />
+            <pnp:Property Key="_VirusStatus" Value="0" />
+            <pnp:Property Key="_VirusVendorID" Value="2275" />
+          </pnp:Properties>
+        </pnp:File>
+      </pnp:Files>
+    </pnp:ProvisioningTemplate>
+  </pnp:Templates>
+</pnp:Provisioning>
