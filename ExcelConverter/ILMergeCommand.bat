@@ -1,0 +1,1 @@
+﻿"c:\Program Files (x86)\Microsoft\ILMerge\ILMerge" /ndebug /target:winexe /out:FinancialAccountUtil.exe /log "FinancialAccountTool.exe" /log "NPOI.dll" /log "NPOI.OOXML.dll" /log "NPOI.OpenXml4Net.dll" /log "NPOI.OpenXmlFormats.dll" /log "ICSharpCode.SharpZipLib.dll" /targetplatform:v4
