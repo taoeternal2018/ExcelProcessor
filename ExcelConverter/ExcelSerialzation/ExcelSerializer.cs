@@ -44,7 +44,7 @@ namespace FinancialAccountTool.ExcelSerialzation
             var patriarch = worksheet.CreateDrawingPatriarch();
 
             var headerRowStyle = _workbook.CreateCellStyle();
-            var font = _workbook.CreateFont();
+            var font = _workbook.CreateFont(); 
             font.Boldweight = (short)FontBoldWeight.Bold;
             font.FontHeightInPoints = 12;
             font.Color = HSSFColor.White.Index;

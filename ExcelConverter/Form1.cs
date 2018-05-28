@@ -72,6 +72,7 @@ namespace FinancialAccountTool
 
             if (ofd.ShowDialog() == DialogResult.OK)
             {
+                toolStripProgressBar1.Visible = false;
                 toolStripProgressBar1.Value = 0;
                 string file = ofd.FileName;
                 if (Path.GetExtension(file).Equals(".xlsx") ||
@@ -115,6 +116,7 @@ namespace FinancialAccountTool
             }
             _outFile = saveFileDialog.FileName;
             SetButtonStatus(ItemOrButton.Process, false);
+            toolStripProgressBar1.Visible = true;
 
             var worker = new BackgroundWorker();
             worker.DoWork += DoWork;
@@ -136,6 +138,7 @@ namespace FinancialAccountTool
             toolStripProgressBar1.Value = 0;
             toolStripStatusLabel1.Text = "Add a file to process.";
             listBox1.HorizontalScrollbar = false;
+            toolStripProgressBar1.Visible = false;
         }
         private void listBox1_DrawItem(object sender, DrawItemEventArgs e)
         {

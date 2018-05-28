@@ -40,8 +40,12 @@
             this.tsmiProcess = new System.Windows.Forms.ToolStripMenuItem();
             this.tsmiHelp = new System.Windows.Forms.ToolStripMenuItem();
             this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.tsbAdd = new System.Windows.Forms.ToolStripButton();
+            this.tsbClear = new System.Windows.Forms.ToolStripButton();
             this.toolStripSplitButton1 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbProcess = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.contextMenuStrip1 = new System.Windows.Forms.ContextMenuStrip(this.components);
             this.cmsAdd = new System.Windows.Forms.ToolStripMenuItem();
             this.cmsClear = new System.Windows.Forms.ToolStripMenuItem();
@@ -53,10 +57,6 @@
             this.statusStrip1 = new System.Windows.Forms.StatusStrip();
             this.toolStripProgressBar1 = new System.Windows.Forms.ToolStripProgressBar();
             this.listBox1 = new System.Windows.Forms.ListBox();
-            this.tsbAdd = new System.Windows.Forms.ToolStripButton();
-            this.tsbClear = new System.Windows.Forms.ToolStripButton();
-            this.tsbProcess = new System.Windows.Forms.ToolStripButton();
-            this.tsbExit = new System.Windows.Forms.ToolStripButton();
             this.menuStrip1.SuspendLayout();
             this.toolStrip1.SuspendLayout();
             this.contextMenuStrip1.SuspendLayout();
@@ -152,15 +152,58 @@
             this.toolStrip1.TabIndex = 2;
             this.toolStrip1.Text = "toolStrip1";
             // 
+            // tsbAdd
+            // 
+            this.tsbAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbAdd.Font = new System.Drawing.Font("Segoe UI", 12F);
+            this.tsbAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsbAdd.Image")));
+            this.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbAdd.Name = "tsbAdd";
+            this.tsbAdd.Size = new System.Drawing.Size(36, 36);
+            this.tsbAdd.Text = "Add";
+            this.tsbAdd.Click += new System.EventHandler(this.Add_ToolStripMenuItem_Click);
+            // 
+            // tsbClear
+            // 
+            this.tsbClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbClear.Image = ((System.Drawing.Image)(resources.GetObject("tsbClear.Image")));
+            this.tsbClear.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbClear.Name = "tsbClear";
+            this.tsbClear.Size = new System.Drawing.Size(36, 36);
+            this.tsbClear.Text = "Clear";
+            this.tsbClear.Click += new System.EventHandler(this.Clear_ToolStripMenuItem_Click);
+            // 
             // toolStripSplitButton1
             // 
             this.toolStripSplitButton1.Name = "toolStripSplitButton1";
             this.toolStripSplitButton1.Size = new System.Drawing.Size(6, 39);
             // 
+            // tsbProcess
+            // 
+            this.tsbProcess.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbProcess.Image = ((System.Drawing.Image)(resources.GetObject("tsbProcess.Image")));
+            this.tsbProcess.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbProcess.Name = "tsbProcess";
+            this.tsbProcess.Size = new System.Drawing.Size(36, 36);
+            this.tsbProcess.Text = "Process";
+            this.tsbProcess.ToolTipText = "Process";
+            this.tsbProcess.Click += new System.EventHandler(this.Process_ToolStripMenuItem_Click);
+            // 
             // toolStripSeparator2
             // 
             this.toolStripSeparator2.Name = "toolStripSeparator2";
             this.toolStripSeparator2.Size = new System.Drawing.Size(6, 39);
+            // 
+            // tsbExit
+            // 
+            this.tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
+            this.tsbExit.Image = ((System.Drawing.Image)(resources.GetObject("tsbExit.Image")));
+            this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.tsbExit.Name = "tsbExit";
+            this.tsbExit.Size = new System.Drawing.Size(36, 36);
+            this.tsbExit.Text = "toolStripButton3";
+            this.tsbExit.ToolTipText = "Exit";
+            this.tsbExit.Click += new System.EventHandler(this.Exit_ToolStripMenuItem_Click);
             // 
             // contextMenuStrip1
             // 
@@ -233,6 +276,7 @@
             this.statusStrip1.MinimumSize = new System.Drawing.Size(50, 0);
             this.statusStrip1.Name = "statusStrip1";
             this.statusStrip1.Size = new System.Drawing.Size(750, 22);
+            this.statusStrip1.SizingGrip = false;
             this.statusStrip1.Stretch = false;
             this.statusStrip1.TabIndex = 4;
             this.statusStrip1.Text = "statusStrip1";
@@ -242,6 +286,7 @@
             this.toolStripProgressBar1.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
             this.toolStripProgressBar1.Name = "toolStripProgressBar1";
             this.toolStripProgressBar1.Size = new System.Drawing.Size(100, 16);
+            this.toolStripProgressBar1.Visible = false;
             // 
             // listBox1
             // 
@@ -260,49 +305,6 @@
             this.listBox1.Click += new System.EventHandler(this.listBox1_Click);
             this.listBox1.DrawItem += new System.Windows.Forms.DrawItemEventHandler(this.listBox1_DrawItem);
             this.listBox1.DoubleClick += new System.EventHandler(this.listBox1_DoubleClick);
-            // 
-            // tsbAdd
-            // 
-            this.tsbAdd.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbAdd.Font = new System.Drawing.Font("Segoe UI", 12F);
-            this.tsbAdd.Image = ((System.Drawing.Image)(resources.GetObject("tsbAdd.Image")));
-            this.tsbAdd.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbAdd.Name = "tsbAdd";
-            this.tsbAdd.Size = new System.Drawing.Size(36, 36);
-            this.tsbAdd.Text = "Add";
-            this.tsbAdd.Click += new System.EventHandler(this.Add_ToolStripMenuItem_Click);
-            // 
-            // tsbClear
-            // 
-            this.tsbClear.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbClear.Image = ((System.Drawing.Image)(resources.GetObject("tsbClear.Image")));
-            this.tsbClear.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbClear.Name = "tsbClear";
-            this.tsbClear.Size = new System.Drawing.Size(36, 36);
-            this.tsbClear.Text = "Clear";
-            this.tsbClear.Click += new System.EventHandler(this.Clear_ToolStripMenuItem_Click);
-            // 
-            // tsbProcess
-            // 
-            this.tsbProcess.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbProcess.Image = ((System.Drawing.Image)(resources.GetObject("tsbProcess.Image")));
-            this.tsbProcess.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbProcess.Name = "tsbProcess";
-            this.tsbProcess.Size = new System.Drawing.Size(36, 36);
-            this.tsbProcess.Text = "Process";
-            this.tsbProcess.ToolTipText = "Process";
-            this.tsbProcess.Click += new System.EventHandler(this.Process_ToolStripMenuItem_Click);
-            // 
-            // tsbExit
-            // 
-            this.tsbExit.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image;
-            this.tsbExit.Image = ((System.Drawing.Image)(resources.GetObject("tsbExit.Image")));
-            this.tsbExit.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.tsbExit.Name = "tsbExit";
-            this.tsbExit.Size = new System.Drawing.Size(36, 36);
-            this.tsbExit.Text = "toolStripButton3";
-            this.tsbExit.ToolTipText = "Exit";
-            this.tsbExit.Click += new System.EventHandler(this.Exit_ToolStripMenuItem_Click);
             // 
             // FinancialAccountTool
             // 

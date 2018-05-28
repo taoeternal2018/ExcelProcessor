@@ -5,3 +5,5 @@
 /ExcelConverter/bin/Debug
 /ExcelConverter/obj/Debug
 /packages
+/ExcelConverter/bin/Release
+/ExcelConverter/obj/Release

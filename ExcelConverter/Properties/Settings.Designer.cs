@@ -22,7 +22,7 @@ namespace FinancialAccountTool.Properties {
                 return defaultInstance;
             }
         }
-
+        
         [global::System.Configuration.UserScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
         [global::System.Configuration.DefaultSettingValueAttribute("AR")]
@@ -44,30 +44,6 @@ namespace FinancialAccountTool.Properties {
             }
             set {
                 this["paymentTab"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("yyyy-mm-dd")]
-        public string dateFormat {
-            get {
-                return ((string)(this["dateFormat"]));
-            }
-            set {
-                this["dateFormat"] = value;
-            }
-        }
-        
-        [global::System.Configuration.UserScopedSettingAttribute()]
-        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("#,###,##0.00")]
-        public string currencyFormat {
-            get {
-                return ((string)(this["currencyFormat"]));
-            }
-            set {
-                this["currencyFormat"] = value;
             }
         }
     }
